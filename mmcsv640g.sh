@@ -9,7 +9,7 @@ echo '*Only Use If You Accept This*'
 echo '* Started 12th November 2015*'
 echo '*** Thanks - @LittleDMatt ***'
 echo '*****************************'
-VERSION='V0.87 11th October 2016'
+VERSION='V0.88 25th September 2017'
 echo $VERSION
 #
 # Indebted to Ben West for mmcsv - these js are tweaks and additions to his original parsing options
@@ -101,7 +101,7 @@ echo "Waiting for valid CSV file download from Carelink"
 		sleep 30s	# check every 30 seconds 
 	done
 
-else
+else if [ $uploader -eq 1 ]
 	echo "Using CareLink Uploader..."
 	while [ $((10#$(date +'%s')/60-$START_TIME)) -lt $gap_mins_delay ] ; 
 	do 
@@ -124,6 +124,20 @@ else
 	sleep 30s  # check every 30 seconds
 	done
 	sleep 10s # in case we've just stumbled across the file before it's finished downloading... inotifywait would be better solution for another day...
+else
+	echo "Using Wget downloader..."
+	TODAY=$(date +"%d/%m/%Y")
+	3MONTH=$(date --date='-3 months' +"%d/%m/%Y")
+
+	wget --save-cookies ~\cookies.txt \
+	     --keep-session-cookies \
+	     --post-data 'j_username=USERNAME&j_password=PASSWORD' \
+	     --delete-after \
+	     https://carelink.minimed.eu/patient/j_security_check
+
+	wget --load-cookies cookies.txt \
+	     --post-data "report=11&listSeparator=%2C&customerID=CUSTOMERID&datePicker2=${3MONTH}&datePicker1=${TODAY}" \
+	     https://carelink.minimed.eu/patient/main/selectCSV.do?t=11 $DownloadPath/${TODAY}.csv
 fi 	
 
 if [ $COUNT -eq 0 ]
