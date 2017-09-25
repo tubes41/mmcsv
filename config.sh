@@ -7,10 +7,10 @@
 # ****************************************************************************************
 # ExamplePath='/c/Data/Path' 
 # NB NO SPACES anywhere here, unless you know what you're doing please - Welcome to Shell Scripting :-)
-Mmcsv640gPath='/c/Users/matt/Nightscout/csv/mmcsv' #Installation Directory for mmscv640g stack
-CSVDataPath='/c/Users/matt/AutoCSV' # The directory you want to throw all the data around in
-DownloadPath='/c/Users/matt/Downloads' # Where your CSV file downloaded from CareLink will appear (without any IMPORTANT CSV files in it!)
-NodejsPath='/c/Program Files/nodejs' # Where Nodejs installed on your system
+Mmcsv640gPath='~/mmcsv' #Installation Directory for mmscv640g stack
+CSVDataPath='~/AutoCSV' # The directory you want to throw all the data around in
+DownloadPath='~/downloads' # Where your CSV file downloaded from CareLink will appear (without any IMPORTANT CSV files in it!)
+NodejsPath='/usr/bin/node' # Where Nodejs installed on your system
 MousePath='/c/Users/matt/Nightscout' #Where MiniMouseMacro is installed
 # ****************************************************************************************
 # USER SPECIFIC Variables - Please enter your values here
