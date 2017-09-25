@@ -26,6 +26,7 @@ uploader=1 #Firefox + Selenium (0) or .NET uploader (1): default is 1 from versi
 CareLinkURL='https://carelink.minimed.eu' #CareLink site, .eu or .com
 CareLinkUsername='user' #CareLink Username
 CareLinkPassword='password' #CareLink Password
+CareLinkCustID='CustomerID' #CareLink Customer ID
 # ****************************************************************************************
 # AUTOMATICALLY GENERATED Variables - No need to edit these yourself
 # ****************************************************************************************
