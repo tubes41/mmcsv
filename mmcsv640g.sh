@@ -131,13 +131,13 @@ else
 
 	wget --save-cookies ~\cookies.txt \
 	     --keep-session-cookies \
-	     --post-data 'j_username=USERNAME&j_password=PASSWORD' \
+	     --post-data "j_username=${CareLinkUsername}&j_password=${CareLinkPassword}" \
 	     --delete-after \
-	     https://carelink.minimed.eu/patient/j_security_check
+	     ${CareLinkURL}/patient/j_security_check
 
 	wget --load-cookies cookies.txt \
-	     --post-data "report=11&listSeparator=%2C&customerID=CUSTOMERID&datePicker2=${3MONTH}&datePicker1=${TODAY}" \
-	     https://carelink.minimed.eu/patient/main/selectCSV.do?t=11 $DownloadPath/${TODAY}.csv
+	     --post-data "report=11&listSeparator=%2C&customerID=${CareLinkCustID}&datePicker2=${3MONTH}&datePicker1=${TODAY}" \
+	     ${CareLinkURL}/patient/main/selectCSV.do?t=11 $DownloadPath/${TODAY}.csv
 fi 	
 
 if [ $COUNT -eq 0 ]
